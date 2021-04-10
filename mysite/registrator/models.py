@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import Sum
 
 
-class Time(models.Model):
+class TimeSlot(models.Model):
     time = models.DateTimeField("date published", unique=True)
     max_seats = models.IntegerField(default=30)
     duration = models.DurationField()
@@ -22,10 +22,11 @@ class Time(models.Model):
 
 
 class Visitor(models.Model):
-    identifier = models.CharField(max_length=200)
-    time = models.ForeignKey(Time, on_delete=models.CASCADE)
+    time = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
     seats = models.IntegerField(default=1)
+    name = models.CharField(max_length=200)
+    email = models.EmailField(unique=True)
 
     class Meta:
-        unique_together = [("identifier", "time")]
-        ordering = ["identifier"]
+        unique_together = [("name", "time")]
+        ordering = ["name"]
