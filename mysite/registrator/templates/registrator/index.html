@@ -62,7 +62,7 @@
                                     <div class="modal-card">
                                         <header class="modal-card-head">
                                         <p class="modal-card-title">S'inscrire pour le {{ time.time|localtime}}</p>
-                                        <button class="delete" aria-label="close"></button>
+                                        <button class="delete" aria-label="close"  onclick="getElementById('subscribe-{{ time.id }}').classList.remove('is-active')"></button>
                                         </header>
                                         <section class="modal-card-body">
                                             <div class="control">
