@@ -23,6 +23,19 @@ class IndexView(TemplateView):
         return super().get(request, args, kwargs)
 
 
+class SubscribeView(TemplateView):
+    template_name = "registrator/subscribe.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["times"] = TimeSlot.objects.all().order_by("time")
+        context["show_details"] = False
+        return context
+
+    def get(self, request, *args, **kwargs):
+        return super().get(request, args, kwargs)
+
+
 def register(request, time_id):
     try:
         with transaction.atomic():
@@ -45,7 +58,7 @@ def register(request, time_id):
 
 
 class DetailsView(TemplateView):
-    template_name = "registrator/index.html"
+    template_name = "registrator/subscribe.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
