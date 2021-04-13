@@ -1,0 +1,93 @@
+{% load tz %}
+
+    <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">
+                Créneau du {{ time.time|localtime}}
+            </p>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                {% if time.get_remaining_seats > 0 %}
+                Pour ce créneau, nous avons {{ time.get_remaining_seats }} places disponibles.
+                {% else %}
+                Ce créneau est plein !
+                {% endif %}
+                <br>
+
+                <br>
+                {% if show_details %}
+                {% for visitor in time.visitor_set.all %}
+                <div class="control mb-2">
+                    <div class="tags has-addons">
+                        <span class="tag is-dark">{{ visitor.name }}</span>
+                        <span class="tag is-info">{{ visitor.seats }} place{% if visitor.seats > 1 %}s{% endif %}</span>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                <p class="has-text-weight-bold">
+                    <time datetime="{{ time.time }}">De {{ time.time|localtime|time:"H:i" }}</time> à <time datetime="{{ time.end }}"> {{ time.end|localtime|time:"H:i" }}</time>
+                </p>
+            </div>
+        </div>
+        {% if time.get_remaining_seats > 0 %}
+        <footer class="card-footer is-justify-content-flex-end ">
+            <a href="#" class="card-footer-item" onclick="getElementById('subscribe-{{ time.id }}').classList.add('is-active')">S'inscrire</a>
+        </footer>
+        <div class="modal" id="subscribe-{{ time.id }}">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">S'inscrire pour le {{ time.time|localtime}}</p>
+                    <button class="delete" aria-label="close" onclick="getElementById('subscribe-{{ time.id }}').classList.remove('is-active')"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="control">
+                        <form action="{% url 'register' time.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="field">
+                                <label class="label">Nombre de visiteurs</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select name="nb_seats">
+                                            {% for i in time.get_available_seats %}
+                                            <option value="{{ i }}">{{ i }} </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Nom et prénom</label>
+                                <div class="control has-icons-left has-icons-right">
+                                    <input required name="name" class="input" type="text" placeholder="Nom et prénom">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Courriel</label>
+                                <div class="control has-icons-left has-icons-right">
+                                    <input required name="email" class="input" type="email" placeholder="Courriel">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <button type="submit" class=" is-pulled-right button is-link">Réserver</button>
+                        </form>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button" onclick="getElementById('subscribe-{{ time.id }}').classList.remove('is-active')">Annuler</button>
+                </footer>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <br>

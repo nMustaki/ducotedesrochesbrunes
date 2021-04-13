@@ -28,7 +28,10 @@ class SubscribeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["times"] = TimeSlot.objects.all().order_by("time")
+        context["times_5"] = []
+        context["times_6"] = []
+        for slot in TimeSlot.objects.all().order_by("time"):
+            context[f"times_{slot.time.day}"].append(slot)
         context["show_details"] = False
         return context
 
