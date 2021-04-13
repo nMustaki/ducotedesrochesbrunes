@@ -11,48 +11,83 @@
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
    <style>
-   #mapid { height: 180px; }
+   #mapid { height: 450px; }
    </style>
   </head>
-  <body style="background-image: url('https://bonjournature.fr/wp-content/uploads/image-de-fleurs-a-telecharger-gratuitement-2.jpg');background-size: cover;
- background-repeat: no-repeat;>
+  <body style="background-image: url('https://bonjournature.fr/wp-content/uploads/image-de-fleurs-a-telecharger-gratuitement-2.jpg');background-size: cover; background-repeat: no-repeat;min-height:1024px">
   <section class="section">
     <div class="container">
-      <h1 class="title">
-        Inscrivez-vous pour venir visiter le Jardin du côté des roches brunes !
-      </h1>
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-                <li>
-                    <a href="/">
-                        <span class="icon is-small">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                        </span>
-                        <span>Accueil</span>
-                    </a>
-                </li>
-            </ul>
-            </nav>
-            <br>
         <div class="columns">
-
-
-
            <article class="message is-dark">
-            <div class="message-header">
-                <p>Bonjour bienvenue !!</p>
-                <button class="delete" aria-label="delete"></button>
-            </div>
-            <div class="message-body">
-               Du fait du coravirus, une inscriptiont est nécessaire pour le jardin.
+              <div class="message-header">
+                  <p>Le jardin du côté des Roches Brunes est un ancien jardin  d'horticulteur</p>
+                  <button class="delete" aria-label="delete"></button>
+              </div>
+              <div class="message-body">
+                <div class="content">
+                  <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                      <li class="is-active">
+                        <a href="#">
+                          <span class="icon is-small">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                          </span>
+                          <span>Accueil</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/inscription">
+                          <span class="icon is-small">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                          </span>
+                          <span>Inscription</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <p>
+                    Il est entouré de murs à pêches où poussent des arbres fruitiers et des vignes.
+                    On peut y voir aussi une serre ancienne.
+                    Depuis 2008, les deux jardinières ont restructuré les espaces avec potagers, massifs de vivaces , d'annuelles et ont planté d'autres arbres fruitiers.
+                    Elles ont creusé aussi une mare qui accueille tritons, grenouilles et libellules.
+                    Les cultures se font sans engrais ni pesticides pour respecter la biodiversité.
+                    Le jardin évolue sans cesse, et les jardinières expérimentent diverses techniques et variétés de plantes.
+                  </p>
+                  <p>
+                    Dans le cadre de la manifestation nationale, RDV aux jardins, qui a lieu en juin, le jardin est ouvert à la visite depuis plusieurs années, un troc et une vente de plantes s'y déroulent ainsi que différentes animations.
+                  </p>
+                  <h2>Ouverture le 5 et 6 juin 2021</h2>
+                  <p>
+                    Nous sommes heureux de vous accueillir, cette année, les 5 et 6 juin 2021 de 10h à 18 h pour la visite du jardin.
+                    Nous maintenons le troc et la vente de plantes, cependant, les autres animations, la restauration, buvette, marché artisannal, musique ne pourront avoir lieu.
+                  </p>
 
-               <a href="inscription">Cliquez pour voir les créneaux disponibles</a>
-                 <div id="mapid"></div>
+                  <h3>Précautions sanitaires:</h3>
 
-            </div>
+                  <p>
+                    <a href="inscription">Inscrivez-vous sur ce site pour réserver votre heure d'arrivée</a>, par créneaux de 30mn.
+                    Indiquez vos noms, adresses mail et créneaux dans l'onglet dédié.
+                    Vous pourrez également y déposer vos questions et commentaires.
+                  </p>
+                  <ul>
+                    <li>Le masque pour tout le monde est nécessaire.</li>
+                    <li>Du gel hydroalcoolique sera à disposition.</li>
+                    <li>Suivez le fléchage pour la visite.</li>
+                    <li>Respectez les distances entre personnes.</li>
+                    <li>La présence dans le jardin sera limitée à 1 h30.</li>
+                    <li>Les enfants en dessous de 3 ans ne nécessitent pas d'inscription.</li>
+                  </ul>
+
+                  Bonne visite !
+                  </p>
+
+                  <div id="mapid"></div>
+
+                </div>
+              </div>
             </article>
-
         </div>
     </div>
   </section>
@@ -61,21 +96,25 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
    <script>
-    var mymap = L.map('mapid').setView([48.86732,2.45260], 13);
-    {% comment %} L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'your.mapbox.access.token'
-}).addTo(mymap); {% endcomment %}
+    var mymap = L.map('mapid').setView([48.86732,2.45260], 16);
 
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
 
-L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    subdomains: ['a','b','c']
-}).addTo( mymap );
+    var LeafIcon = L.Icon.extend({
+      options: {
+        {% comment %} shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png', {% endcomment %}
+        iconSize:     [38, 95],
+        shadowSize:   [50, 64],
+        iconAnchor:   [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor:  [-3, -76]
+      }
+    });
 
+    var greenIcon = new LeafIcon({iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png'});
+
+    L.marker([48.86732,2.45260], {icon: greenIcon}).bindPopup("Sentier des jasmins, 93100 Montreuil").addTo(mymap);
    </script>
 </html>
