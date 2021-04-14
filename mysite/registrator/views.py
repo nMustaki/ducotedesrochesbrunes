@@ -13,15 +13,6 @@ from registrator.models import TimeSlot, Visitor
 class IndexView(TemplateView):
     template_name = "registrator/index.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["times"] = TimeSlot.objects.all().order_by("time")
-        context["show_details"] = False
-        return context
-
-    def get(self, request, *args, **kwargs):
-        return super().get(request, args, kwargs)
-
 
 class SubscribeView(TemplateView):
     template_name = "registrator/subscribe.html"
@@ -32,6 +23,7 @@ class SubscribeView(TemplateView):
         context["times_6"] = []
         for slot in TimeSlot.objects.all().order_by("time"):
             context[f"times_{slot.time.day}"].append(slot)
+
         context["show_details"] = False
         return context
 
@@ -60,12 +52,11 @@ def register(request, time_id):
         return redirect("index")
 
 
-class DetailsView(TemplateView):
+class DetailsView(SubscribeView):
     template_name = "registrator/subscribe.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["times"] = TimeSlot.objects.all().order_by("time")
         context["show_details"] = True
         return context
 
