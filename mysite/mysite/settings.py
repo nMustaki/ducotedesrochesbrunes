@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-qg*q^=n#5b_zmuk&+#m=g+p26qsokej+!1hh=#fx*&*6%h(7vn
 # ALLOWED_HOSTS = []
 
 DEBUG = False
-ALLOWED_HOSTS = ["ducotedesrochesbrunes.mustaki.fr"]
+ALLOWED_HOSTS = ["jardindesrochesbrunes.fr"]
 
 
 # Application definition
