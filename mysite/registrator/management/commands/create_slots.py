@@ -8,42 +8,22 @@ class Command(BaseCommand):
     help = "Init db"
 
     def handle(self, *args, **options):
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 5, 8))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 5, 9))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 5, 12))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 5, 13))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 5, 14))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 5, 15))
-        )
+        duration = timedelta(hours=1, minutes=30)
 
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 6, 8))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 6, 9))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 6, 12))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 6, 13))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 6, 14))
-        )
-        TimeSlot.objects.create(
-            duration=timedelta(hours=1), max_seats=30, time=timezone.make_aware(timezone.datetime(2021, 6, 6, 15))
-        )
+        the_5 = timezone.localtime().replace(year=2021, month=6, day=5, hour=10, minute=0, second=0, microsecond=0)
+        the_5_max = timezone.localtime().replace(year=2021, month=6, day=5, hour=18, minute=30, second=0, microsecond=0)
+
+        while the_5 < the_5_max:
+            slot = TimeSlot.objects.create(duration=duration, max_seats=15, time=the_5)
+            print(slot.time)
+            the_5 = the_5 + timedelta(minutes=30)
+
+        the_6 = timezone.localtime().replace(year=2021, month=6, day=6, hour=10, minute=0, second=0, microsecond=0)
+        the_6_max = timezone.localtime().replace(year=2021, month=6, day=6, hour=18, minute=30, second=0, microsecond=0)
+
+        while the_6 < the_6_max:
+            slot = TimeSlot.objects.create(duration=duration, max_seats=15, time=the_6)
+            print(slot.time)
+            the_6 = the_6 + timedelta(minutes=30)
 
         self.stdout.write(self.style.SUCCESS("Successfully"))
