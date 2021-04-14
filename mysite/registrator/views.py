@@ -65,3 +65,7 @@ class DetailsView(SubscribeView):
             return redirect("admin/login/?next=/details")
 
         return super().get(request, args, kwargs)
+
+
+class PicturesView(TemplateView):
+    template_name = "registrator/pictures.html"

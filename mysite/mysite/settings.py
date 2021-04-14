@@ -29,7 +29,8 @@ SECRET_KEY = "django-insecure-qg*q^=n#5b_zmuk&+#m=g+p26qsokej+!1hh=#fx*&*6%h(7vn
 DEBUG = False
 ALLOWED_HOSTS = ["jardindesrochesbrunes.fr"]
 
-
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR.joinpath("static")
 # Application definition
 
 
