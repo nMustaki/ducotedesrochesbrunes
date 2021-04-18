@@ -3,7 +3,7 @@
     <div class="card">
         <header class="card-header">
             <p class="card-header-title">
-                Arriver à {{ time.time|localtime}}
+                {{ time.time|date:'l H:i'}}
             </p>
         </header>
         <div class="card-content">
@@ -86,7 +86,7 @@
                     </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button" onclick="getElementById('subscribe-{{ time.id }}').classList.remove('is-active')">Annuler</button>
+                    <button class="button" onclick="getElementById('subscribe-{{ time.id }}').classList.remove('is-active')">Fermer</button>
                 </footer>
             </div>
         </div>

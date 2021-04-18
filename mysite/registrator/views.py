@@ -69,3 +69,7 @@ class DetailsView(SubscribeView):
 
 class PicturesView(TemplateView):
     template_name = "registrator/pictures.html"
+
+
+class ContactView(TemplateView):
+    template_name = "registrator/contact.html"

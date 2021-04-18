@@ -1,8 +1,8 @@
+{% load static %}
 {% include 'registrator/_head.html' %}
 
            <article class="message is-dark">
               <div class="message-header">
-                  <p>Le jardin des Roches Brunes est un ancien jardin d'horticulteur</p>
               </div>
               <div class="message-body">
                 <div class="content">
@@ -32,45 +32,65 @@
                           <span>Photos</span>
                         </a>
                       </li>
+                      <li>
+                        <a href="/contact">
+                          <span class="icon is-small">
+                            <i class="fa fa-address-book" aria-hidden="true"></i>
+                          </span>
+                          <span>Contact</span>
+                        </a>
+                      </li>
                     </ul>
                   </nav>
+                  <h1 class="is-size-1">Le jardin des Roches Brunes</h1>
+                  <div class="notification is-success is-light">
+                    <h3><strong>Sentier des jasmins</strong> 93100 Montreuil</h3>
+                  </div>
+
+                  <h3>Visite gratuite sur inscription les 5 et 6 juin 2021 de 10h à 18h</h3>
                   <p>
-                    Il est entouré de murs à pêches où poussent des arbres fruitiers et des vignes.
-                    On peut y voir aussi une serre ancienne.
-                    Depuis 2008, les deux jardinières ont restructuré les espaces avec potagers, massifs de vivaces , d'annuelles et ont planté d'autres arbres fruitiers.
-                    Elles ont creusé aussi une mare qui accueille tritons, grenouilles et libellules.
-                    Les cultures se font sans engrais ni pesticides pour respecter la biodiversité.
-                    Le jardin évolue sans cesse, et les jardinières expérimentent diverses techniques et variétés de plantes.
-                  </p>
-                  <p>
-                    Dans le cadre de la manifestation nationale, RDV aux jardins, qui a lieu en juin, le jardin est ouvert à la visite depuis plusieurs années, un troc et une vente de plantes s'y déroulent ainsi que différentes animations.
-                  </p>
-                  <h2>Ouverture le 5 et 6 juin 2021</h2>
-                  <p>
-                    Nous sommes heureux de vous accueillir, cette année, les 5 et 6 juin 2021 de 10h à 18 h pour la visite du jardin.
+                    Dans le cadre de la manifestation nationale, RDV aux jardins, nous sommes heureux de vous accueillir, cette année, les 5 et 6 juin 2021 de 10h à 18 h pour la visite du jardin.
                     Nous maintenons le troc et la vente de plantes, cependant les autres animations, la restauration, buvette, marché artisannal, musique ne pourront avoir lieu.
                   </p>
 
-                  <h3>Précautions sanitaires:</h3>
-
-                  <p>
-                    <a href="inscription">Inscrivez-vous sur ce site pour réserver votre heure d'arrivée</a>, par créneaux de 30mn.
-                    Indiquez vos noms, adresses mail et créneaux dans l'onglet dédié.
-                    Vous pourrez également y déposer vos questions et commentaires.
-                  </p>
-                  <ul>
-                    <li>Le masque pour tout le monde est nécessaire.</li>
-                    <li>Du gel hydroalcoolique sera à disposition.</li>
-                    <li>Suivez le fléchage pour la visite.</li>
-                    <li>Respectez les distances entre personnes.</li>
-                    <li>La présence dans le jardin sera limitée à 1 h30.</li>
-                    <li>Les enfants en dessous de 3 ans ne nécessitent pas d'inscription.</li>
-                  </ul>
+                  <div class="buttons">
+                    <button class="button is-danger"><a href="inscription">Cliquez ici pour vous inscrire</a></button>
+                  </div>
 
                   Bonne visite !
                   </p>
 
-                  <div id="mapid"></div>
+                  <h3>Présentation</h3>
+                  <p>
+                    Cet ancien jardin d'horticulteur est entouré de murs à pêches où poussent des arbres fruitiers et des vignes.
+                    On peut y voir aussi une serre ancienne.
+                  </p>
+                  <p>
+                    Depuis 2008, les deux jardinières ont restructuré les espaces avec potagers, massifs de vivaces, d'annuelles et ont planté d'autres arbres fruitiers.
+                    Elles ont creusé aussi une mare qui accueille tritons, grenouilles et libellules.
+                  </p>
+                  <p>
+                    Les cultures se font sans engrais ni pesticides pour respecter la biodiversité.
+                    Le jardin évolue sans cesse, et les jardinières expérimentent diverses techniques et variétés de plantes.
+                  </p>
+
+                  <h3>Venir au jardin</h3>
+
+
+
+                <div class="notification is-success is-light">
+                  Accès via le portail vert au fond de l'impasse
+
+                  <div class="buttons is-pulled-right">
+                    <button class="button is-danger"><a target="_blank" href="https://www.google.fr/maps/place/Sentier+des+Jasmins,+93100+Montreuil/@48.8674407,2.452849,21z/data=!4m5!3m4!1s0x47e66d4c24e491cf:0x69a2a40cb54cedbf!8m2!3d48.8674487!4d2.4529587">Voir le plan</a></button>
+                  </div>
+
+
+                </div>
+                   <figure class="image is-16by9">
+                    <img src="{% static 'registrator/Facebook_couverture_851x315px.jpg' %}" style="height:500px">
+                  </figure>
+                  {% comment %} <div id="mapid"></div> {% endcomment %}
 
                 </div>
               </div>
