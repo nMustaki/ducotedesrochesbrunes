@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import distutils
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,14 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-qg*q^=n#5b_zmuk&+#m=g+p26qsokej+!1hh=#fx*&*6%h(7vn"
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-qg*q^=n#5b_zmuk&+#m=g+p26qsokej+!1hh=#fx*&*6%h(7vn")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-# ALLOWED_HOSTS = []
-
-DEBUG = False
-ALLOWED_HOSTS = ["jardindesrochesbrunes.fr"]
+DEBUG = bool(distutils.util.strtobool(str(os.environ.get("DEBUG", True))))
+ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS", "*")]
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR.joinpath("static")
@@ -135,3 +133,12 @@ CACHES = {
         "LOCATION": "unique-snowflake",
     }
 }
+
+EMAIL_HOST = "mail.gandi.net"
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "contact@jardindesrochesbrunes.fr"
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = "contact@jardindesrochesbrunes.fr"
+
+ADMINS = [("feydaykyn", "feydaykyn@gmail.com")]
