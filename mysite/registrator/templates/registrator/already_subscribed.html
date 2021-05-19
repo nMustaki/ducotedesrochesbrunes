@@ -5,7 +5,7 @@
 
            <article class="message is-dark">
               <div class="message-header">
-                  <p>Merci !</p>
+                  <p>Une erreur s'est produite.</p>
 
               </div>
               <div class="message-body">
@@ -47,19 +47,26 @@
                     </ul>
                   </nav>
 
-                  <h3>Vous êtes maintenant inscrit(e) !</h3>
 
-                  <p>Nous vous attendons le {{ time.time|date:"l j F" }} à {{ time.time|date:"H:i" }}.</p>
-                  {% if mail_sent %}
-                  <p>Un courriel de confirmation vous a été envoyé.</p>
-                  {% else %}
-                  <p>Petit détail: nous n'avons pas pu vous envoyer un courriel de confirmation, mais vous êtes bien inscrit(e), tout va bien !</p>
+                  <article class="message is-danger">
+                    <div class="message-header">
+                      <p>Vous êtes déjà inscrit(e) pour un autre créneau !</p>
+                    </div>
+                    <div class="message-body">
+                      <p>Nous ne pouvons pas utiliser le même courriel pour deux réservations.
+                  Vous êtes déjà inscrit(e) pour le {{ time.time|date:"l j F" }} à {{ time.time|date:"H:i" }}.</p>
 
-                  {% endif %}
                   <p>
                     Pour toute question ou information, nos coordonnées sont sur <a href="/contact">la page de contact.</a>
 
                   </p>
+                    </div>
+                  </article>
+
+
+                  <h3></h3>
+
+
 
 
                 </div>

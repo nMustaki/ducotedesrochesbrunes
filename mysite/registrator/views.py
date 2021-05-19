@@ -2,9 +2,11 @@ import time
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render, redirect
 from django.db import transaction
+from django.db import IntegrityError
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from registrator.models import TimeSlot, Visitor
+from registrator.service_send_mail import my_send_mail
 
 
 class IndexView(TemplateView):
@@ -29,24 +31,28 @@ class SubscribeView(TemplateView):
 
 
 def register(request, time_id):
+    # try:
+    time = get_object_or_404(TimeSlot.objects.select_for_update(), pk=time_id)
     try:
-        with transaction.atomic():
-            time = get_object_or_404(TimeSlot.objects.select_for_update(), pk=time_id)
-            try:
-                nb_seats = int(request.POST.get("nb_seats"))
-            except TypeError:
-                print("Invalid number")
-                return redirect("index")
-
-            email = request.POST.get("email")
-            name = request.POST.get("name")
-
-            Visitor.objects.create(seats=nb_seats, time=time, name=name, email=email)
-
-            context = {"time": time}
-            return render(request, "registrator/subscribed.html", context)
-    except Exception:
+        nb_seats = int(request.POST.get("nb_seats"))
+    except TypeError:
+        print("Invalid number")
         return redirect("index")
+
+    email = request.POST.get("email")
+    name = request.POST.get("name")
+
+    try:
+        visitor = Visitor.objects.create(seats=nb_seats, time=time, name=name, email=email)
+    except IntegrityError:
+        existing_time = TimeSlot.objects.get(visitor__email=email)
+        return render(request, "registrator/already_subscribed.html", {"time": existing_time})
+
+    mail_sent = my_send_mail(visitor, time)
+
+    return render(request, "registrator/subscribed.html", {"time": time, "mail_sent": mail_sent})
+    # except Exception:
+    #     return render(request, "registrator/error.html")
 
 
 def unsubscribe(request):
