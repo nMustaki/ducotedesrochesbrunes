@@ -1,12 +1,9 @@
-import random
+import time
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render, redirect
 from django.db import transaction
 from django.views.generic.base import TemplateView
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views import View
-from registrator.flower_names import flower_names
 from registrator.models import TimeSlot, Visitor
 
 
@@ -44,12 +41,24 @@ def register(request, time_id):
             email = request.POST.get("email")
             name = request.POST.get("name")
 
-            visitor = Visitor.objects.create(seats=nb_seats, time=time, name=name, email=email)
+            Visitor.objects.create(seats=nb_seats, time=time, name=name, email=email)
 
-            context = {"time": time, "flower": random.choice(list(flower_names))}
+            context = {"time": time}
             return render(request, "registrator/subscribed.html", context)
     except Exception:
         return redirect("index")
+
+
+def unsubscribe(request):
+    # Poor man's ddos protection
+    time.sleep(1)
+    try:
+        visitor = Visitor.objects.get(email=request.POST.get("email"))
+        context = {"time": visitor.time}
+    except Visitor.DoesNotExist:
+        context = {"time": None, "invalid_email": request.POST.get("email")}
+
+    return render(request, "registrator/unsubscribed.html", context)
 
 
 class DetailsView(SubscribeView):

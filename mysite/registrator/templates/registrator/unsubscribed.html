@@ -1,0 +1,74 @@
+{% load static %}
+{% load tz %}
+
+{% include 'registrator/_head.html' %}
+
+           <article class="message is-dark">
+              <div class="message-header">
+                  <p>Merci !</p>
+
+              </div>
+              <div class="message-body">
+                <div class="content">
+                  <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                      <li>
+                        <a href="/">
+                          <span class="icon is-small">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                          </span>
+                          <span>Accueil</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/inscription">
+                          <span class="icon is-small">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                          </span>
+                          <span>Inscription</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/photos">
+                          <span class="icon is-small">
+                            <i class="fa fa-camera" aria-hidden="true"></i>
+                          </span>
+                          <span>Photos</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/contact">
+                          <span class="icon is-small">
+                            <i class="fa fa-address-book" aria-hidden="true"></i>
+                          </span>
+                          <span>Contact</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+
+                  {% if time %}
+                    <h3>Vous êtes maintenant désinscrit(e) !</h3>
+
+                    <p>Nous espérons vous voir une prochaine fois !</p>
+                    <p>
+                      Pour rappel, vous étiez inscrit(e) le {{ time.time|date:"l j F" }} à {{ time.time|date:"H:i" }}.
+                      Pour toute question ou information, nos coordonnées sont sur <a href="/contact">la page de contact.</a>
+                    </p>
+                  {% else %}
+                    <h3>Courriel inconnu</h3>
+
+                    <p>Nous n'avons pas retrouvé ce courriel ({{ invalid_email }}) et n'avons donc pas pu vous désinscrire.</p>
+                    <p>
+                      Pour toute question ou information, nos coordonnées sont sur <a href="/contact">la page de contact.</a>
+                    </p>
+
+                  {% endif %}
+                </div>
+              </div>
+            </article>
+    </div>
+  </section>
+  </body>
+
+</html>

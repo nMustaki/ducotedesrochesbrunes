@@ -10,4 +10,5 @@ urlpatterns = [
     path("details", views.DetailsView.as_view(), name="details"),
     path("contact", views.ContactView.as_view(), name="contact"),
     path("register/<int:time_id>", views.register, name="register"),
+    path("unsubscribe", views.unsubscribe, name="unsubscribe"),
 ]
