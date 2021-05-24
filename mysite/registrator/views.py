@@ -39,7 +39,7 @@ def register(request, time_id):
         print("Invalid number")
         return redirect("index")
 
-    email = request.POST.get("email")
+    email = request.POST.get("email").lower().strip()
     name = request.POST.get("name")
 
     try:
@@ -59,10 +59,11 @@ def unsubscribe(request):
     # Poor man's ddos protection
     time.sleep(1)
     try:
-        visitor = Visitor.objects.get(email=request.POST.get("email"))
+        visitor = Visitor.objects.get(email__iexact=request.POST.get("email").lower().strip())
         context = {"time": visitor.time}
+        visitor.delete()
     except Visitor.DoesNotExist:
-        context = {"time": None, "invalid_email": request.POST.get("email")}
+        context = {"time": None, "invalid_email": visitor.email}
 
     return render(request, "registrator/unsubscribed.html", context)
 
