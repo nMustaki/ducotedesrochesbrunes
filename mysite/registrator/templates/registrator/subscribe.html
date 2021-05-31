@@ -63,13 +63,13 @@
                                             </a>
                                         </div>
                                         <div class="column">
-                                            <a id="button-6-june" class="button is-white" onclick="enable_6()">
+                                            <a id="button-6-june" class="button" onclick="enable_6()">
                                                 <span class="icon is-small"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                                         <span>6 juin 2021</span>
                                             </a>
                                         </div>
                                         <div class="column">
-                                            <a id="button-unsubscribe" class="button is-white"onclick="enable_unsubscribe()">
+                                            <a id="button-unsubscribe" class="button"onclick="enable_unsubscribe()">
                                                 <span class="icon is-small"><i class="fa fa-times" aria-hidden="true"></i></span>
                                                 <span>Se désinscrire</span>
                                             </a>
@@ -160,17 +160,14 @@
 function enable_5() {
     document.getElementById('tab-5-june').classList.add('is-active');
     document.getElementById('list-5').classList.remove('is-hidden');
-    document.getElementById('button-5-june').classList.remove('is-white');
     document.getElementById('button-5-june').classList.add('is-link');
 
     document.getElementById('tab-6-june').classList.remove('is-active');
     document.getElementById('list-6').classList.add('is-hidden');
-    document.getElementById('button-6-june').classList.add('is-white');
     document.getElementById('button-6-june').classList.remove('is-link');
 
     document.getElementById('tab-unsubscribe').classList.remove('is-active');
     document.getElementById('unsubscribe').classList.add('is-hidden');
-    document.getElementById('button-unsubscribe').classList.add('is-white');
     document.getElementById('button-unsubscribe').classList.remove('is-link');
 
 }
@@ -178,17 +175,14 @@ function enable_5() {
 function enable_6() {
     document.getElementById('tab-6-june').classList.add('is-active');
     document.getElementById('list-6').classList.remove('is-hidden')
-    document.getElementById('button-6-june').classList.remove('is-white');
     document.getElementById('button-6-june').classList.add('is-link');
 
     document.getElementById('tab-5-june').classList.remove('is-active');
     document.getElementById('list-5').classList.add('is-hidden');
-    document.getElementById('button-5-june').classList.add('is-white');
     document.getElementById('button-5-june').classList.remove('is-link');
 
     document.getElementById('tab-unsubscribe').classList.remove('is-active');
     document.getElementById('unsubscribe').classList.add('is-hidden');
-    document.getElementById('button-unsubscribe').classList.add('is-white');
     document.getElementById('button-unsubscribe').classList.remove('is-link');
 
 }
@@ -197,17 +191,14 @@ function enable_6() {
 function enable_unsubscribe() {
     document.getElementById('tab-unsubscribe').classList.add('is-active');
     document.getElementById('unsubscribe').classList.remove('is-hidden')
-    document.getElementById('button-unsubscribe').classList.remove('is-white');
     document.getElementById('button-unsubscribe').classList.add('is-link');
 
     document.getElementById('tab-5-june').classList.remove('is-active');
     document.getElementById('list-5').classList.add('is-hidden');
-    document.getElementById('button-5-june').classList.add('is-white');
     document.getElementById('button-5-june').classList.remove('is-link');
 
     document.getElementById('tab-6-june').classList.remove('is-active');
     document.getElementById('list-6').classList.add('is-hidden');
-    document.getElementById('button-6-june').classList.add('is-white');
     document.getElementById('button-6-june').classList.remove('is-link');
 }
 
