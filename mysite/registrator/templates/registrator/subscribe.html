@@ -55,43 +55,43 @@
                                         <li>Les enfants en dessous de 3 ans ne nécessitent pas d'inscription.</li>
                                     </ul>
 
-                                    <div class="tabs is-toggle">
+                                    <div class="is-hidden-tablet columns">
+                                        <div class="column">
+                                            <a id="button-5-june" class="button is-link"  onclick="enable_5()">
+                                                <span class="icon is-small"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                        <span>5 juin 2021</span>
+                                            </a>
+                                        </div>
+                                        <div class="column">
+                                            <a id="button-6-june" class="button is-white" onclick="enable_6()">
+                                                <span class="icon is-small"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                        <span>6 juin 2021</span>
+                                            </a>
+                                        </div>
+                                        <div class="column">
+                                            <a id="button-unsubscribe" class="button is-white"onclick="enable_unsubscribe()">
+                                                <span class="icon is-small"><i class="fa fa-times" aria-hidden="true"></i></span>
+                                                <span>Se désinscrire</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="tabs is-toggle is-hidden-mobile">
                                         <ul>
                                             <li id="tab-5-june" class="is-active">
-                                                <a  onclick="
-                                                    getElementById('tab-5-june').classList.add('is-active');
-                                                    getElementById('list-5').classList.remove('is-hidden');
-                                                    getElementById('tab-6-june').classList.remove('is-active');
-                                                    getElementById('list-6').classList.add('is-hidden');
-                                                    getElementById('tab-unsubscribe').classList.remove('is-active');
-                                                    getElementById('unsubscribe').classList.add('is-hidden');
-                                                ">
+                                                <a  onclick="enable_5()">
                                                     <span class="icon is-small"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                                     <span>5 juin 2021</span>
                                                 </a>
                                             </li>
                                             <li id="tab-6-june">
-                                                <a  onclick="
-                                                    getElementById('tab-6-june').classList.add('is-active');
-                                                    getElementById('list-6').classList.remove('is-hidden')
-                                                    getElementById('tab-5-june').classList.remove('is-active');
-                                                    getElementById('list-5').classList.add('is-hidden');
-                                                    getElementById('tab-unsubscribe').classList.remove('is-active');
-                                                    getElementById('unsubscribe').classList.add('is-hidden');
-                                                ">
+                                                <a  onclick="enable_6()">
                                                     <span class="icon is-small"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                                     <span>6 juin 2021</span>
                                                 </a>
                                             </li>
                                             <li id="tab-unsubscribe">
-                                                <a  onclick="
-                                                    getElementById('tab-unsubscribe').classList.add('is-active');
-                                                    getElementById('unsubscribe').classList.remove('is-hidden')
-                                                    getElementById('tab-5-june').classList.remove('is-active');
-                                                    getElementById('list-5').classList.add('is-hidden');
-                                                    getElementById('tab-6-june').classList.remove('is-active');
-                                                    getElementById('list-6').classList.add('is-hidden');
-                                                ">
+                                                <a  onclick="enable_unsubscribe()">
                                                     <span class="icon is-small"><i class="fa fa-times" aria-hidden="true"></i></span>
                                                     <span>Se désinscrire</span>
                                                 </a>
@@ -155,5 +155,62 @@
             </div>
         </section>
     </body>
+<script>
 
+function enable_5() {
+    document.getElementById('tab-5-june').classList.add('is-active');
+    document.getElementById('list-5').classList.remove('is-hidden');
+    document.getElementById('button-5-june').classList.remove('is-white');
+    document.getElementById('button-5-june').classList.add('is-link');
+
+    document.getElementById('tab-6-june').classList.remove('is-active');
+    document.getElementById('list-6').classList.add('is-hidden');
+    document.getElementById('button-6-june').classList.add('is-white');
+    document.getElementById('button-6-june').classList.remove('is-link');
+
+    document.getElementById('tab-unsubscribe').classList.remove('is-active');
+    document.getElementById('unsubscribe').classList.add('is-hidden');
+    document.getElementById('button-unsubscribe').classList.add('is-white');
+    document.getElementById('button-unsubscribe').classList.remove('is-link');
+
+}
+
+function enable_6() {
+    document.getElementById('tab-6-june').classList.add('is-active');
+    document.getElementById('list-6').classList.remove('is-hidden')
+    document.getElementById('button-6-june').classList.remove('is-white');
+    document.getElementById('button-6-june').classList.add('is-link');
+
+    document.getElementById('tab-5-june').classList.remove('is-active');
+    document.getElementById('list-5').classList.add('is-hidden');
+    document.getElementById('button-5-june').classList.add('is-white');
+    document.getElementById('button-5-june').classList.remove('is-link');
+
+    document.getElementById('tab-unsubscribe').classList.remove('is-active');
+    document.getElementById('unsubscribe').classList.add('is-hidden');
+    document.getElementById('button-unsubscribe').classList.add('is-white');
+    document.getElementById('button-unsubscribe').classList.remove('is-link');
+
+}
+
+
+function enable_unsubscribe() {
+    document.getElementById('tab-unsubscribe').classList.add('is-active');
+    document.getElementById('unsubscribe').classList.remove('is-hidden')
+    document.getElementById('button-unsubscribe').classList.remove('is-white');
+    document.getElementById('button-unsubscribe').classList.add('is-link');
+
+    document.getElementById('tab-5-june').classList.remove('is-active');
+    document.getElementById('list-5').classList.add('is-hidden');
+    document.getElementById('button-5-june').classList.add('is-white');
+    document.getElementById('button-5-june').classList.remove('is-link');
+
+    document.getElementById('tab-6-june').classList.remove('is-active');
+    document.getElementById('list-6').classList.add('is-hidden');
+    document.getElementById('button-6-june').classList.add('is-white');
+    document.getElementById('button-6-june').classList.remove('is-link');
+}
+
+
+</script>
 </html>
