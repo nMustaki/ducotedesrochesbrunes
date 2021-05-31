@@ -59,11 +59,12 @@ def unsubscribe(request):
     # Poor man's ddos protection
     time.sleep(1)
     try:
-        visitor = Visitor.objects.get(email__iexact=request.POST.get("email").lower().strip())
+        email = request.POST.get("email", "").lower().strip()
+        visitor = Visitor.objects.get(email__iexact=email)
         context = {"time": visitor.time}
         visitor.delete()
     except Visitor.DoesNotExist:
-        context = {"time": None, "invalid_email": visitor.email}
+        context = {"time": None, "invalid_email": email}
 
     return render(request, "registrator/unsubscribed.html", context)
 
