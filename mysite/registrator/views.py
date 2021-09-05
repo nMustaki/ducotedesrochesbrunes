@@ -1,7 +1,7 @@
 import time
+from django.conf import settings
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render, redirect
-from django.db import transaction
 from django.db import IntegrityError
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
@@ -27,10 +27,15 @@ class SubscribeView(TemplateView):
         return context
 
     def get(self, request, *args, **kwargs):
+        if not settings.SUBSCRIBE_ENABLED:
+            return redirect("index")
         return super().get(request, args, kwargs)
 
 
 def register(request, time_id):
+    if not settings.SUBSCRIBE_ENABLED:
+        return redirect("index")
+
     # try:
     time = get_object_or_404(TimeSlot.objects.select_for_update(), pk=time_id)
     try:

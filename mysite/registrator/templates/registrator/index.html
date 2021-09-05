@@ -16,6 +16,7 @@
                           <span>Accueil</span>
                         </a>
                       </li>
+                      {% if SUBSCRIBE_ENABLED %}
                       <li>
                         <a href="/inscription">
                           <span class="icon is-small">
@@ -24,6 +25,7 @@
                           <span>Inscription</span>
                         </a>
                       </li>
+                      {% endif %}
                       <li>
                         <a href="/photos">
                           <span class="icon is-small">
@@ -43,6 +45,7 @@
                     </ul>
                   </nav>
                   <h1 class="is-size-1">Le jardin des Roches Brunes</h1>
+                  {% if SUBSCRIBE_ENABLED %}
                   <div class="notification is-success is-light">
                     <h3><strong>Sentier des jasmins</strong> 93100 Montreuil</h3>
                   </div>
@@ -56,9 +59,9 @@
                   <div class="buttons">
                     <button class="button is-danger"><a href="inscription">Cliquez ici pour vous inscrire</a></button>
                   </div>
-
                   Bonne visite !
                   </p>
+                  {% endif %}
 
                   <h3>Présentation</h3>
                   <p>
@@ -87,6 +90,7 @@
 
 
                 </div>
+                <h3>La dernière ouverture</h3>
                    <figure class="image is-16by9">
                     <img src="{% static 'registrator/Facebook_couverture_851x315px.jpg' %}">
                   </figure>

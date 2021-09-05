@@ -142,3 +142,22 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = "contact@jardindesrochesbrunes.fr"
 
 ADMINS = [("feydaykyn", "feydaykyn@gmail.com")]
+
+SUBSCRIBE_ENABLED = bool(os.environ.get("SUBSCRIBE_ENABLED", default=False))
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "registrator.context_processors.subscribe_enabled",
+            ],
+        },
+    },
+]
